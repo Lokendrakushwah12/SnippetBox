@@ -61,7 +61,7 @@ const CodeList = () => {
   ];
 
   return (
-    <div className="pb-12 w-full h-full">
+    <div className="py-12 w-full h-full">
       <AnimationContainer delay={0.2}>
         <h2 className="text-2xl font-[500] mb-2">Recently Added snippets</h2>
         <ul className="space-y-2">
