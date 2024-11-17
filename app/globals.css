@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --foreground50: #ededed17;
+    --scroll-color: #292929;
+    --scrollbar-thumb: var(--scroll-color);
+    --scrollbar-track: transparent;
+  }
+}
+
+html {
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+  letter-spacing: -0.09px;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+}
+
+::selection {
+  background-color: var(--foreground50);
+  /* color: var(--background); */
+}
