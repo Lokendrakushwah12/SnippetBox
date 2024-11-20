@@ -6,9 +6,11 @@ import "./globals.css";
 
 export const geistSans = Geist({
   subsets: ["latin"],
+  preload: false,
 });
 export const geistMono = Geist_Mono({
   subsets: ["latin"],
+  preload: false,
 });
 
 export const metadata: Metadata = {
