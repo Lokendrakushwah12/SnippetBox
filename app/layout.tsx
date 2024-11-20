@@ -4,8 +4,12 @@ import { Toaster } from "sonner";
 import { ReduxProvider } from "./ReduxProvider";
 import "./globals.css";
 
-export const geistSans = Geist();
-export const geistMono = Geist_Mono();
+export const geistSans = Geist({
+  subsets: ["latin"],
+});
+export const geistMono = Geist_Mono({
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "Snippet Box",
