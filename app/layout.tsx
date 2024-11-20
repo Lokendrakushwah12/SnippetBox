@@ -4,10 +4,10 @@ import { Toaster } from "sonner";
 import { ReduxProvider } from "./ReduxProvider";
 import "./globals.css";
 
-export const geistSans = Geist({
+const geistSans = Geist({
   subsets: ["latin"],
 });
-export const geistMono = Geist_Mono({
+const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
@@ -35,5 +35,5 @@ export default function RootLayout({
   );
 }
 
-// export const geist_Sans = Geist();
-// export const geist_Mono = Geist_Mono();
+export const geist_Sans = Geist();
+export const geist_Mono = Geist_Mono();
