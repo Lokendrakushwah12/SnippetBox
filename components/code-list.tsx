@@ -1,64 +1,18 @@
+"use client";
 import { CheckIcon, CopyIcon, EyeIcon, TrashIcon } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import MagicCard from "./ui/magic-card";
 import AnimationContainer from "./animation-container";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store/rootReducer";
 
 const CodeList = () => {
   const loading = false;
 
-  const snippets = [
-    {
-      id: "1",
-      title: "Hello World",
-      code: "console.log('Hello, World!')",
-    },
-    {
-      id: "2",
-      title: "Hello World",
-      code: "console.log('Hello, World!')",
-    },
-    {
-      id: "3",
-      title: "Hello World",
-      code: "console.log('Hello, World!')",
-    },
-    {
-      id: "4",
-      title: "Hello World",
-      code: "console.log('Hello, World!')",
-    },
-    {
-      id: "5",
-      title: "Hello World",
-      code: "console.log('Hello, World!')",
-    },
-    {
-      id: "6",
-      title: "Hello World",
-      code: "console.log('Hello, World!')",
-    },
-    {
-      id: "7",
-      title: "Hello World",
-      code: "console.log('Hello, World!')",
-    },
-    {
-      id: "8",
-      title: "Hello World",
-      code: "console.log('Hello, World!')",
-    },
-    {
-      id: "9",
-      title: "Hello World",
-      code: "console.log('Hello, World!')",
-    },
-    {
-      id: "10",
-      title: "Hello World",
-      code: "console.log('Hello, World!')",
-    },
-  ];
+  const snippetsData = useSelector(
+    (state: RootState) => state.snippet.snippets
+  );
 
   return (
     <div className="py-12 w-full h-full">
@@ -76,24 +30,31 @@ const CodeList = () => {
             </div>
           ) : (
             <>
-              {snippets.map((data, index) => (
+              {snippetsData.map((data, index) => (
                 <MagicCard key={index}>
-                  <li className="flex bg-white/5 p-4 py-2 items-center w-full justify-between">
-                    <div className="flex items-center gap-2">
-                      <div className="text-sm text-[#555]">{data.id}</div>
-                      <div className="text-sm text-white/80">{data.title}</div>
+                  <li className="flex flex-col bg-white/5 p-4 py-2">
+                    <div className="flex items-center w-full justify-between">
+                      <div className="flex items-center gap-2">
+                        <div className="text-sm text-[#555]">{index + 1}</div>
+                        <div className="text-base text-neutral-200">
+                          {data.title}
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <button className="text-[#555] hover:text-white">
+                          <EyeIcon size={18} />
+                        </button>
+                        <button className="text-[#555] hover:text-white">
+                          <CopyIcon size={16} />
+                        </button>
+                        <button className="text-[#555] hover:text-white">
+                          <TrashIcon size={16} />
+                        </button>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <button className="text-[#555] hover:text-white">
-                        <EyeIcon size={18} />
-                      </button>
-                      <button className="text-[#555] hover:text-white">
-                        <CopyIcon size={16} />
-                      </button>
-                      <button className="text-[#555] hover:text-white">
-                        <TrashIcon size={16} />
-                      </button>
-                    </div>
+                    <p className="text-neutral-400 pl-4 text-sm line-clamp-3">
+                      {data.code}
+                    </p>
                   </li>
                 </MagicCard>
               ))}
