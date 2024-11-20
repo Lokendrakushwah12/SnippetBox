@@ -35,5 +35,9 @@ export default function RootLayout({
   );
 }
 
-export const geist_Sans = Geist();
-export const geist_Mono = Geist_Mono();
+export const geist_Sans = Geist({
+  subsets: ["latin"],
+});
+export const geist_Mono = Geist_Mono({
+  subsets: ["latin"],
+});
