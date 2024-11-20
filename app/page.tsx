@@ -1,6 +1,7 @@
 import CodeList from "@/components/code-list";
 import Background from "@/components/ui/background";
 import { geist_Sans } from "./layout";
+import AddSnippet from "@/components/add-snippet";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
           <p className="text-base md:text-lg text-center dark:text-neutral-300">
             Save, organize, and access your code snippets anytime, anywhere.
           </p>
+          <AddSnippet />
           <CodeList />
           {/* <div className="flex gap-4 items-center flex-col sm:flex-row">
             <a

@@ -85,13 +85,13 @@ const CodeList = () => {
                     </div>
                     <div className="flex items-center gap-2">
                       <button className="text-[#555] hover:text-white">
-                        <EyeIcon size={20} />
+                        <EyeIcon size={18} />
                       </button>
                       <button className="text-[#555] hover:text-white">
-                        <CopyIcon size={20} />
+                        <CopyIcon size={16} />
                       </button>
                       <button className="text-[#555] hover:text-white">
-                        <TrashIcon size={20} />
+                        <TrashIcon size={16} />
                       </button>
                     </div>
                   </li>
