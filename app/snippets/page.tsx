@@ -1,6 +1,5 @@
 import CodeList from "@/components/code-list";
 import Background from "@/components/ui/background";
-import React from "react";
 
 const page = () => {
   return (

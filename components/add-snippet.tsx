@@ -1,7 +1,7 @@
 "use client";
 import { addToSnippet, updateToSnippet } from "@/store/slice/snippetSlice";
 import { useParams } from "next/navigation";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 
 interface Snippet {

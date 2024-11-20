@@ -1,11 +1,9 @@
 "use client";
-import { CheckIcon, CopyIcon, EyeIcon, TrashIcon } from "lucide-react";
-import Link from "next/link";
-import React from "react";
-import MagicCard from "./ui/magic-card";
-import AnimationContainer from "./animation-container";
-import { useSelector } from "react-redux";
 import { RootState } from "@/store/rootReducer";
+import { CopyIcon, EyeIcon, TrashIcon } from "lucide-react";
+import { useSelector } from "react-redux";
+import AnimationContainer from "./animation-container";
+import MagicCard from "./ui/magic-card";
 
 const CodeList = () => {
   const loading = false;
