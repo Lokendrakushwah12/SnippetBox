@@ -25,16 +25,10 @@ const DeleteModal: React.FC<DeleteModalProps> = ({
           <h3 className="text-lg font-semibold">Confirm Deletion</h3>
           <p>Are you sure you want to delete this URL?</p>
           <div className="flex justify-end mt-4">
-            <Button
-              onClick={onClose}
-              variant="outline"
-              className="mr-2 text-primary"
-            >
+            <button onClick={onClose} className="mr-2 text-primary">
               Cancel
-            </Button>
-            <Button onClick={onConfirm} variant="destructive">
-              Delete
-            </Button>
+            </button>
+            <button onClick={onConfirm}>Delete</button>
           </div>
         </div>
       </AnimationContainer>
