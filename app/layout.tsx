@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+// import { Geist, Geist_Mono } from "next/font/google";
 import { Toaster } from "sonner";
 import { ReduxProvider } from "./ReduxProvider";
 import "./globals.css";
 
-const geistSans = Geist({
-  subsets: ["latin"],
-});
-const geistMono = Geist_Mono({
-  subsets: ["latin"],
-});
+// const geistSans = Geist({
+//   subsets: ["latin"],
+// });
+// const geistMono = Geist_Mono({
+//   subsets: ["latin"],
+// });
 
 export const metadata: Metadata = {
   title: "Snippet Box",
@@ -23,9 +23,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.className} ${geistMono.className} antialiased`}
-      >
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className={`antialiased`}>
         <ReduxProvider>
           <Toaster />
           {children}
@@ -34,10 +40,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-export const geist_Sans = Geist({
-  subsets: ["latin"],
-});
-export const geist_Mono = Geist_Mono({
-  subsets: ["latin"],
-});

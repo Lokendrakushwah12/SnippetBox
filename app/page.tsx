@@ -1,5 +1,4 @@
 import Background from "@/components/ui/background";
-import { geist_Sans } from "./layout";
 import AddSnippet from "@/components/add-snippet";
 import Link from "next/link";
 
@@ -10,7 +9,7 @@ export default function Home() {
       <div className="flex flex-col items-center min-h-screen justify-between p-8 py-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
         <main className="flex flex-col gap-8 justify-start items-center">
           <h1
-            className={`text-4xl sm:text-6xl font-bold  ${geist_Sans.className} dark:text-white`}
+            className={`text-4xl sm:text-6xl font-bold  geist_Sans dark:text-white`}
           >
             Snippet Box
           </h1>

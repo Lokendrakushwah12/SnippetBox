@@ -27,9 +27,14 @@ html {
 body {
   color: var(--foreground);
   background: var(--background);
+  font-family: "Geist Mono", monospace;
 }
 
 ::selection {
   background-color: var(--foreground50);
   /* color: var(--background); */
+}
+
+.geist_Sans{
+  font-family: 'Geist', sans-serif;
 }
