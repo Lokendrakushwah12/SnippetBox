@@ -6,11 +6,9 @@ import "./globals.css";
 
 export const geistSans = Geist({
   subsets: ["latin"],
-  preload: false,
 });
 export const geistMono = Geist_Mono({
   subsets: ["latin"],
-  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -37,5 +35,5 @@ export default function RootLayout({
   );
 }
 
-export const geist_Sans = Geist();
-export const geist_Mono = Geist_Mono();
+// export const geist_Sans = Geist();
+// export const geist_Mono = Geist_Mono();

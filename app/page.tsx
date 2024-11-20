@@ -1,6 +1,6 @@
 import CodeList from "@/components/code-list";
 import Background from "@/components/ui/background";
-import { geist_Sans } from "./layout";
+// import { geist_Sans } from "./layout";
 import AddSnippet from "@/components/add-snippet";
 import Link from "next/link";
 
