@@ -5,11 +5,11 @@ import Background from "@/components/ui/background";
 import { RootState } from "@/store/rootReducer";
 import { Search } from "lucide-react";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
-const page = () => {
+const Page = () => {
   const [query, setQuery] = useState("");
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const snippetsData = useSelector(
     (state: RootState) => state.snippet.snippets
@@ -47,4 +47,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
