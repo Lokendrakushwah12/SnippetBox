@@ -35,6 +35,10 @@ body {
   /* color: var(--background); */
 }
 
-.geist_Sans{
-  font-family: 'Geist', sans-serif;
+.geist_Sans {
+  font-family: "Geist", sans-serif;
+}
+
+::-webkit-search-cancel-button {
+  cursor: pointer;
 }
