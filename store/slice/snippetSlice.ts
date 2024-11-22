@@ -38,9 +38,9 @@ export const snippetSlice = createSlice({
       toast.success("Snippet added successfully 🎉");
     },
     updateToSnippet: (state, action: PayloadAction<Snippet>) => {
-      const index = state.snippets.findIndex((item) => {
-        item._id === action.payload._id;
-      });
+      const index = state.snippets.findIndex(
+        (item) => item._id === action.payload._id
+      );
 
       if (index >= 0) {
         state.snippets[index] = action.payload;
@@ -49,9 +49,9 @@ export const snippetSlice = createSlice({
       }
     },
     removeFromSnippet: (state, action: PayloadAction<{ _id: string }>) => {
-      const index = state.snippets.findIndex((item) => {
-        item._id === action.payload._id;
-      });
+      const index = state.snippets.findIndex(
+        (item) => item._id === action.payload._id
+      );
 
       if (index >= 0) {
         state.snippets.splice(index, 1);

@@ -27,7 +27,7 @@ html {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: "Geist Mono", monospace;
+  font-family: var(--font-geist-mono);
 }
 
 ::selection {
@@ -36,7 +36,7 @@ body {
 }
 
 .geist_Sans {
-  font-family: "Geist", sans-serif;
+  font-family: var(--font-geist-sans);
 }
 
 ::-webkit-search-cancel-button {

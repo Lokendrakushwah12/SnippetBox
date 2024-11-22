@@ -9,7 +9,6 @@ import { useSelector } from "react-redux";
 
 const Page = () => {
   const [query, setQuery] = useState("");
-  // const dispatch = useDispatch();
 
   const snippetsData = useSelector(
     (state: RootState) => state.snippet.snippets
@@ -18,6 +17,9 @@ const Page = () => {
   const filteredData = snippetsData.filter((snippet) =>
     snippet.title.toLocaleLowerCase().includes(query.toLocaleLowerCase())
   );
+
+
+
   return (
     <>
       <Background />
