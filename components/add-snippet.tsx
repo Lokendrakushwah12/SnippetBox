@@ -1,6 +1,7 @@
 "use client";
 import { RootState } from "@/store/rootReducer";
 import { addToSnippet, updateToSnippet } from "@/store/slice/snippetSlice";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -89,12 +90,23 @@ const AddSnippet = () => {
       {error && (
         <div className="text-red-500 text-sm font-medium mb-2">{error}</div>
       )}
-      <button
-        onClick={createSnippet}
-        className="rounded-xl w-full font-[500] border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-      >
-        {snippetId ? "Update" : "Add"}
-      </button>
+      <div className="flex w-full text-[#aaa] gap-2 justify-center items-center">
+        <button
+          onClick={createSnippet}
+          className="rounded-xl w-full font-[500] border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
+        >
+          {snippetId ? "Update" : "Add"}
+        </button>
+        {snippetId && "OR"}
+        {snippetId && (
+          <Link
+            href="/"
+            className="rounded-xl w-[220px] font-[500] border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
+          >
+            + Create one
+          </Link>
+        )}
+      </div>
     </div>
   );
 };

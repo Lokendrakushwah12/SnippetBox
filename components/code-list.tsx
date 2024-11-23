@@ -88,10 +88,11 @@ const CodeList = ({ snippetsData }: CodeListProps) => {
         <AnimationContainer delay={0.2}>
           <ul className="space-y-2">
             {snippetsData.length === 0 ? (
-              <div className="flex justify-center items-center">
+              <div className="flex flex-col gap-8 pt-8 justify-center items-center">
                 <h2 className="text-xl text-neutral-300 font-[400] mb-2">
                   No Snippets Available
                 </h2>
+                
               </div>
             ) : (
               snippetsData.map((snippet, index) => (
