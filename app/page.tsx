@@ -2,6 +2,7 @@ import AddSnippet from "@/components/add-snippet";
 import AnimationContainer from "@/components/animation-container";
 import Background from "@/components/ui/background";
 import Link from "next/link";
+import { Suspense } from "react";
 
 export default function Home() {
   return (
@@ -27,9 +28,11 @@ export default function Home() {
               local storage.
             </p>
           </AnimationContainer>
-          <AnimationContainer className="size-full" delay={0.06}>
-            <AddSnippet />
-          </AnimationContainer>
+          <Suspense fallback={<div>Loading...</div>}>
+            <AnimationContainer className="size-full" delay={0.06}>
+              <AddSnippet />
+            </AnimationContainer>
+          </Suspense>
           <AnimationContainer className="size-full" delay={0.08}>
             <Link
               href="/snippets"
