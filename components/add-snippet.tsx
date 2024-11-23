@@ -1,4 +1,5 @@
 "use client";
+import { RootState } from "@/store/rootReducer";
 import { addToSnippet, updateToSnippet } from "@/store/slice/snippetSlice";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -19,8 +20,8 @@ const AddSnippet = () => {
   const searchParams = useSearchParams();
   const snippetId = searchParams.get("snippetId");
 
-  const snippet = useSelector((state: any) =>
-    state.snippet?.snippets?.find((s: any) => s._id === snippetId)
+  const snippet = useSelector((state: RootState) =>
+    state.snippet?.snippets?.find((s) => s._id === snippetId)
   );
 
   const lineNumbers = text.split("\n").length;
