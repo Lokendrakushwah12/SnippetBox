@@ -1,6 +1,6 @@
 "use client";
 import { addToSnippet, updateToSnippet } from "@/store/slice/snippetSlice";
-import { useParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
@@ -10,16 +10,18 @@ interface Snippet {
   _id: string;
 }
 const AddSnippet = () => {
-  const { pasteId } = useParams();
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
   const [error, setError] = useState("");
   const dispatch = useDispatch();
+  
+  const searchParams = useSearchParams();
+  const snippetId = searchParams.get("snippetId");
 
   const lineNumbers = text.split("\n").length;
-  const snippetId = Array.isArray(pasteId)
-    ? pasteId[0]
-    : pasteId || Date.now().toString(32);
+  const newSnippetId = Array.isArray(snippetId)
+    ? snippetId[0]
+    : snippetId || Date.now().toString(32);
 
   const createSnippet = () => {
     if (!title.trim() || !text.trim()) {
@@ -32,10 +34,10 @@ const AddSnippet = () => {
     const snippet: Snippet = {
       title: title,
       code: text,
-      _id: snippetId,
+      _id: newSnippetId,
     };
 
-    if (pasteId) {
+    if (snippetId) {
       dispatch(updateToSnippet(snippet));
     } else {
       dispatch(addToSnippet(snippet));
@@ -77,7 +79,7 @@ const AddSnippet = () => {
         onClick={createSnippet}
         className="rounded-xl w-full font-[500] border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
       >
-        Add
+        {snippetId ? "Update" : "Add"}
       </button>
     </div>
   );

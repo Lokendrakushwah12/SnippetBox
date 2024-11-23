@@ -59,7 +59,7 @@ export const snippetSlice = createSlice({
         toast.success("Snippet deleted successfully 🎉");
       }
     },
-    resetAll: (state, action: PayloadAction<Snippet>) => {
+    resetAll: (state) => {
       state.snippets = [];
       localStorage.removeItem("snippet");
       toast.success("Snippets Cleared successfully 🎉");

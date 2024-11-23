@@ -1,17 +1,14 @@
 "use client";
 import { removeFromSnippet } from "@/store/slice/snippetSlice";
 import { AnimatePresence } from "framer-motion";
-import {
-  Check,
-  CopyIcon,
-  EyeIcon,
-  TrashIcon
-} from "lucide-react";
+import { Check, CopyIcon, Edit, EyeIcon, Share, TrashIcon } from "lucide-react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import AnimationContainer from "./animation-container";
 import DeleteModal from "./DeleteModal";
 import MagicCard from "./ui/magic-card";
+import { toast } from "sonner";
+import Link from "next/link";
 
 interface Snippet {
   title: string;
@@ -47,9 +44,33 @@ const CodeList = ({ snippetsData }: CodeListProps) => {
   const handleCopy = (snippetId: string, snippetCode: string) => {
     setCopiedSnippetId(snippetId);
     navigator.clipboard.writeText(snippetCode);
+    toast.success("Snippet copied successfully 🎉");
     setTimeout(() => {
       setCopiedSnippetId(null);
     }, 2000);
+  };
+
+  const handleShare = (snippetId: string, snippetCode: string) => {
+    const shareURI = window.location.href + "/" + snippetId;
+    const shareData = {
+      title: "Snippet Code",
+      text: `Check out this snippet:\n\n${snippetCode}`,
+      url: shareURI,
+    };
+    if (navigator.share) {
+      navigator
+        .share(shareData)
+        .then(() => {
+          toast.success("Snippet shared successfully 🎉");
+        })
+        .catch((error) => {
+          console.error("Error sharing snippet:", error);
+          toast.error("Failed to share snippet 😢");
+        });
+    } else {
+      navigator.clipboard.writeText(`${shareData.text}\n\n${shareData.url}`);
+      toast.success("Snippet link copied to clipboard 🎉");
+    }
   };
 
   return (
@@ -84,9 +105,18 @@ const CodeList = ({ snippetsData }: CodeListProps) => {
                         </div>
                       </div>
                       <div className="flex items-center gap-2">
-                        <button className="text-[#555] hover:text-white">
+                        <Link
+                          href={`/?snippetId=${snippet._id}`}
+                          className="text-[#555] hover:text-white"
+                        >
+                          <Edit size={18} />
+                        </Link>
+                        <Link
+                          href={`snippets/${snippet._id}`}
+                          className="text-[#555] hover:text-white"
+                        >
                           <EyeIcon size={18} />
-                        </button>
+                        </Link>
                         <button
                           onClick={() => handleCopy(snippet._id, snippet.code)}
                           className="text-[#555] hover:text-white"
@@ -96,6 +126,12 @@ const CodeList = ({ snippetsData }: CodeListProps) => {
                           ) : (
                             <CopyIcon size={16} />
                           )}
+                        </button>
+                        <button
+                          onClick={() => handleShare(snippet._id, snippet.code)}
+                          className="text-[#555] hover:text-white"
+                        >
+                          <Share size={16} />
                         </button>
                         <button
                           onClick={() => handleDelete(snippet._id)}
