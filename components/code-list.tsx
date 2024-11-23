@@ -109,7 +109,7 @@ const CodeList = ({ snippetsData }: CodeListProps) => {
                           href={`/?snippetId=${snippet._id}`}
                           className="text-[#555] hover:text-white"
                         >
-                          <Edit size={18} />
+                          <Edit size={16} />
                         </Link>
                         <Link
                           href={`snippets/${snippet._id}`}

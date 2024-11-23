@@ -1,8 +1,8 @@
 "use client";
 import { addToSnippet, updateToSnippet } from "@/store/slice/snippetSlice";
 import { useSearchParams } from "next/navigation";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 interface Snippet {
   title: string;
@@ -13,15 +13,27 @@ const AddSnippet = () => {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
   const [error, setError] = useState("");
+  const [isUpdated, setIsUpdated] = useState(false);
   const dispatch = useDispatch();
-  
+
   const searchParams = useSearchParams();
   const snippetId = searchParams.get("snippetId");
+
+  const snippet = useSelector((state: any) =>
+    state.snippet?.snippets?.find((s: any) => s._id === snippetId)
+  );
 
   const lineNumbers = text.split("\n").length;
   const newSnippetId = Array.isArray(snippetId)
     ? snippetId[0]
     : snippetId || Date.now().toString(32);
+
+  useEffect(() => {
+    if (snippetId && snippet && !isUpdated) {
+      setTitle(snippet.title);
+      setText(snippet.code);
+    }
+  }, [snippetId, snippet, isUpdated]);
 
   const createSnippet = () => {
     if (!title.trim() || !text.trim()) {
@@ -39,6 +51,7 @@ const AddSnippet = () => {
 
     if (snippetId) {
       dispatch(updateToSnippet(snippet));
+      setIsUpdated(true);
     } else {
       dispatch(addToSnippet(snippet));
     }

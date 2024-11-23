@@ -6,7 +6,7 @@ import { useParams } from "next/navigation";
 import React from "react";
 import { useSelector } from "react-redux";
 
-const page = () => {
+const Page = () => {
   const { snippetId } = useParams();
   const snippet = useSelector((state: any) =>
     state.snippet?.snippets?.find((s: any) => s._id === snippetId)
@@ -33,4 +33,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
